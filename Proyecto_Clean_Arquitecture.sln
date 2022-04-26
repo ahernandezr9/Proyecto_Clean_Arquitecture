@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enterprise Business Rules", "Enterprise Business Rules", "{94618E80-539B-460F-A2E5-0668E4E946BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Business Rules", "Application Business Rules", "{119E72A3-D049-4F22-A16C-EEA740AC7DB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface Adapters", "Interface Adapters", "{A3EC165D-B3FD-4074-899A-FAB2E009201A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework and Drivers", "Framework and Drivers", "{C497F9E8-7DBB-4C05-A23D-ED8D26A28423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean_Arquitecture.Entities", "Clean_Arquitecture.Entities\Clean_Arquitecture.Entities.csproj", "{1912C947-357A-4B63-913F-08408AA2CDA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1912C947-357A-4B63-913F-08408AA2CDA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1912C947-357A-4B63-913F-08408AA2CDA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1912C947-357A-4B63-913F-08408AA2CDA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1912C947-357A-4B63-913F-08408AA2CDA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1912C947-357A-4B63-913F-08408AA2CDA5} = {94618E80-539B-460F-A2E5-0668E4E946BC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E773A03A-9DD4-4782-B660-602BA885BD98}
+	EndGlobalSection
+EndGlobal
