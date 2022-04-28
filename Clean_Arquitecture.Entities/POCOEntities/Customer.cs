@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Clean_Arquitecture.Entities.POCOEntities
 {
-    public class Orden
+    public class Customer
     {
-        public int Id { get; set; }
-        public string ClienteId { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }
