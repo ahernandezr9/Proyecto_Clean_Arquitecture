@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="fluentvalidation" Version="10.4.0" />
+    <PackageReference Include="Mediatr" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Clean_Arquitecture.Entities\Clean_Arquitecture.Entities.csproj" />
+    <ProjectReference Include="..\Clean_Arquitecture.UseCasesDTOs\Clean_Arquitecture.UseCasesDTOs.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CreateOrder\" />
+  </ItemGroup>
+
+</Project>
