@@ -14,7 +14,6 @@ namespace Clean_Arquitecture.Entities.Specifications
         {
             Func<T, bool> ExpressionDelegate = Expression.Compile();
             return ExpressionDelegate(entity);
-        //Branchita
         }
     }
 }
