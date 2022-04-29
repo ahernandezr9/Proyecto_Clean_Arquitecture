@@ -17,9 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{4C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean_Arquitecture.Repositories.EFCore", "Clean_Arquitecture.Repositories.EFCore\Clean_Arquitecture.Repositories.EFCore.csproj", "{A6D501B4-54C5-4867-A585-024E61042738}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean_Arquitecture.UseCasesDTOs", "Clean_Arquitecture.UseCasesDTOs\Clean_Arquitecture.UseCasesDTOs.csproj", "{6B0BC9D2-F3AD-4DBA-8950-5E9C49C73D5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean_Arquitecture.UseCasesDTOs", "Clean_Arquitecture.UseCasesDTOs\Clean_Arquitecture.UseCasesDTOs.csproj", "{6B0BC9D2-F3AD-4DBA-8950-5E9C49C73D5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean_Arquitecture.UseCases", "Clean_Arquitecture.UseCases\Clean_Arquitecture.UseCases.csproj", "{376A0A20-32E3-4CFE-BE23-E94648190462}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean_Arquitecture.UseCases", "Clean_Arquitecture.UseCases\Clean_Arquitecture.UseCases.csproj", "{376A0A20-32E3-4CFE-BE23-E94648190462}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean_Arquitecture.IoC", "Clean_Arquitecture.IoC\Clean_Arquitecture.IoC.csproj", "{72841A87-DA73-4076-B61D-9B40CB59FB72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{376A0A20-32E3-4CFE-BE23-E94648190462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{376A0A20-32E3-4CFE-BE23-E94648190462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{376A0A20-32E3-4CFE-BE23-E94648190462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72841A87-DA73-4076-B61D-9B40CB59FB72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72841A87-DA73-4076-B61D-9B40CB59FB72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72841A87-DA73-4076-B61D-9B40CB59FB72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72841A87-DA73-4076-B61D-9B40CB59FB72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{A6D501B4-54C5-4867-A585-024E61042738} = {4CF86E3B-A01B-4F06-AFB8-E2CE2FD95819}
 		{6B0BC9D2-F3AD-4DBA-8950-5E9C49C73D5F} = {119E72A3-D049-4F22-A16C-EEA740AC7DB6}
 		{376A0A20-32E3-4CFE-BE23-E94648190462} = {119E72A3-D049-4F22-A16C-EEA740AC7DB6}
+		{72841A87-DA73-4076-B61D-9B40CB59FB72} = {A3EC165D-B3FD-4074-899A-FAB2E009201A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E773A03A-9DD4-4782-B660-602BA885BD98}
