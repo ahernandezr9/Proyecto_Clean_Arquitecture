@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean_Arquitecture.UseCases
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean_Arquitecture.UseCases", "Clean_Arquitecture.UseCases\Clean_Arquitecture.UseCases.csproj", "{376A0A20-32E3-4CFE-BE23-E94648190462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean_Arquitecture.IoC", "Clean_Arquitecture.IoC\Clean_Arquitecture.IoC.csproj", "{72841A87-DA73-4076-B61D-9B40CB59FB72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean_Arquitecture.IoC", "Clean_Arquitecture.IoC\Clean_Arquitecture.IoC.csproj", "{72841A87-DA73-4076-B61D-9B40CB59FB72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenters", "Presenters", "{69DAFC1C-A49F-44F2-A929-41708AC178F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean_Arquitecture.WebExceptionsPresenter", "Clean_Arquitecture.WebExceptionsPresenter\Clean_Arquitecture.WebExceptionsPresenter.csproj", "{73EB995E-BDC5-4D08-ACDE-B5A2E4ABD423}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{72841A87-DA73-4076-B61D-9B40CB59FB72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72841A87-DA73-4076-B61D-9B40CB59FB72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72841A87-DA73-4076-B61D-9B40CB59FB72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73EB995E-BDC5-4D08-ACDE-B5A2E4ABD423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73EB995E-BDC5-4D08-ACDE-B5A2E4ABD423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73EB995E-BDC5-4D08-ACDE-B5A2E4ABD423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73EB995E-BDC5-4D08-ACDE-B5A2E4ABD423}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,8 @@ Global
 		{6B0BC9D2-F3AD-4DBA-8950-5E9C49C73D5F} = {119E72A3-D049-4F22-A16C-EEA740AC7DB6}
 		{376A0A20-32E3-4CFE-BE23-E94648190462} = {119E72A3-D049-4F22-A16C-EEA740AC7DB6}
 		{72841A87-DA73-4076-B61D-9B40CB59FB72} = {A3EC165D-B3FD-4074-899A-FAB2E009201A}
+		{69DAFC1C-A49F-44F2-A929-41708AC178F1} = {A3EC165D-B3FD-4074-899A-FAB2E009201A}
+		{73EB995E-BDC5-4D08-ACDE-B5A2E4ABD423} = {69DAFC1C-A49F-44F2-A929-41708AC178F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E773A03A-9DD4-4782-B660-602BA885BD98}
