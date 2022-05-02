@@ -38,5 +38,10 @@ namespace Clean_Arquitecture.WebExceptionsPresenter
             context.ExceptionHandled = true;
             return Task.CompletedTask;
         }
+
+        internal void SetResult(ExceptionContext context, object statuscodes)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

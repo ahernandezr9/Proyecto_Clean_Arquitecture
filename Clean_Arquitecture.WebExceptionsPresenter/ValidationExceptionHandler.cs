@@ -19,7 +19,7 @@ namespace Clean_Arquitecture.WebExceptionsPresenter
             {
                 Builder.AppendLine(
                     string.Format("Propiedad: {0}. Error: {1}",
-                    Failure.PropertyName, Failure.ErrorMessage))
+                    Failure.PropertyName, Failure.ErrorMessage));
             }
             return SetResult(context, StatusCodes.Status400BadRequest, "Error en los datos de entrada.", Builder.ToString());
         }
