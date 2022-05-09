@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Clean_Arquitecture.Controllers\Clean_Arquitecture.Controllers.csproj" />
     <ProjectReference Include="..\Clean_Arquitecture.IoC\Clean_Arquitecture.IoC.csproj" />
     <ProjectReference Include="..\Clean_Arquitecture.WebExceptionsPresenter\Clean_Arquitecture.WebExceptionsPresenter.csproj" />
   </ItemGroup>

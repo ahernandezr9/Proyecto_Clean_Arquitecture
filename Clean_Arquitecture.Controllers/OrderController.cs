@@ -1,0 +1,26 @@
+﻿using Clean_Arquitecture.Presenters;
+using Clean_Arquitecture.UseCases.CreateOrder;
+using Clean_Arquitecture.UseCasesDTOs.CreateOrder;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+
+namespace Clean_Arquitecture.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OrderController
+    {
+        readonly IMediator Mediator;
+        public OrderController(IMediator mediator) => Mediator = mediator;
+
+        [HttpPost("create-order")]
+        public async Task<string> CreateOrder(CreateOrderParams orderparams)
+        {
+            CreateOrderPresenter Presenter = new CreateOrderPresenter();
+            await Mediator.Send(new CreateOrderInputPort(orderparams,Presenter));
+            return Presenter.Content;
+        }
+    }
+}

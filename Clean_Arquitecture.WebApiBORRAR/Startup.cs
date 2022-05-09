@@ -1,5 +1,7 @@
+using Clean_Arquitecture.Entities.Exceptions;
 using Clean_Arquitecture.IoC;
 using Clean_Arquitecture.WebExceptionsPresenter;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,7 +31,12 @@ namespace Clean_Arquitecture.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers(Filters.Register);
+            services.AddControllers(options => options.Filters.Add(new ApiExceptionFilterAttribute(new Dictionary<Type, IExceptionHandler>
+            {
+                { typeof(GeneralException), new GeneralExceptionHandler() },
+                { typeof(ValidationException), new ValidationExceptionHandler()}
+            }
+            )));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Clean_Arquitecture.WebApi", Version = "v1" });
