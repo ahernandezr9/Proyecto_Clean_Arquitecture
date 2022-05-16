@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Clean_Arquitecture.Presenters\Clean_Arquitecture.Presenters.csproj" />
     <ProjectReference Include="..\Clean_Arquitecture.UseCasesDTOs\Clean_Arquitecture.UseCasesDTOs.csproj" />
   </ItemGroup>
 

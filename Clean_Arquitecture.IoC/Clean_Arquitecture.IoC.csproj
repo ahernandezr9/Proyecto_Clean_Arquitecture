@@ -6,12 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Clean_Arquitecture.Presenters\Clean_Arquitecture.Presenters.csproj" />
     <ProjectReference Include="..\Clean_Arquitecture.Repositories.EFCore\Clean_Arquitecture.Repositories.EFCore.csproj" />
     <ProjectReference Include="..\Clean_Arquitecture.UseCases\Clean_Arquitecture.UseCases.csproj" />
   </ItemGroup>
