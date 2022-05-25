@@ -10,8 +10,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Clean_Arquitecture.Entities\Clean_Arquitecture.Entities.csproj" />
+    <ProjectReference Include="..\Clean_Arquitecture.Repositories.EFCore\Clean_Arquitecture.Repositories.EFCore.csproj" />
     <ProjectReference Include="..\Clean_Arquitecture.UseCasesDTOs\Clean_Arquitecture.UseCasesDTOs.csproj" />
-    <ProjectReference Include="..\Proyecto_Clean_Arquitecture.UseCasesPorts\Proyecto_Clean_Arquitecture.UseCasesPorts.csproj" />
+    <ProjectReference Include="..\Clean_Arquitecture.UseCasesPorts\Clean_Arquitecture.UseCasesPorts.csproj" />
   </ItemGroup>
 
 </Project>
