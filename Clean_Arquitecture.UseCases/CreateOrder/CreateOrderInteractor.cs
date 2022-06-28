@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Clean_Arquitecture.Entities.Enums;
 
 namespace Clean_Arquitecture.UseCases.CreateOrder
 {
@@ -18,16 +19,18 @@ namespace Clean_Arquitecture.UseCases.CreateOrder
     {
         readonly IOrderRepository OrderRepository;
         readonly IOrderDetailRepository OrderDetailRepository;
+        readonly IPaymentRepository PaymentRepository;
         readonly IUnitOfWork UnitOfWork;
         readonly ICreateOrderOutputPort OutputPort;
         readonly IEnumerable<IValidator<CreateOrderParams>> Validators;
         public CreateOrderInteractor(IOrderRepository orderRepository,
             IOrderDetailRepository orderDetailRepository,
+            IPaymentRepository paymentRepository,
             IUnitOfWork unitOfWork,
             ICreateOrderOutputPort outputPort,
             IEnumerable<IValidator<CreateOrderParams>> validators) =>
-            (OrderRepository, OrderDetailRepository, UnitOfWork, OutputPort, Validators) = 
-            (orderRepository, orderDetailRepository, unitOfWork, outputPort, validators);
+            (OrderRepository, OrderDetailRepository, PaymentRepository, UnitOfWork, OutputPort, Validators) = 
+            (orderRepository, orderDetailRepository, paymentRepository, unitOfWork, outputPort, validators);
 
         public async Task Handle(CreateOrderParams order)
         {
@@ -41,8 +44,8 @@ namespace Clean_Arquitecture.UseCases.CreateOrder
                 ShipCity = order.ShipCity,
                 ShipCountry = order.ShipCountry,
                 ShipPostalCode = order.ShipPostalCode,
-                ShippingType = Entities.Enums.ShippingType.Road,
-                DiscountType = Entities.Enums.DiscountType.Percentage,
+                ShippingType = ShippingType.Road,
+                DiscountType = DiscountType.Percentage,
                 Discount = 10
             };
             OrderRepository.Create(Order);
@@ -56,7 +59,21 @@ namespace Clean_Arquitecture.UseCases.CreateOrder
                         UnitPrice = Item.UnitPrice,
                         Quantity = Item.Quantity
                     });
+
+                PaymentRepository.Create(
+                    new Payment
+                    {
+                        Order = Order,
+                        AmountPay = ((double)(Item.UnitPrice * Item.Quantity)) - ((double)(Item.UnitPrice * Item.Quantity) * (Order.Discount / 100)),
+                        Ticket = "T00043",
+                        //Ticket = ""+ Order,
+                        //Ticket = "T" + Item.Quantity.ToString().PadLeft(5, '0'),
+                        //Ticket = "T" + Order.Id.ToString().PadLeft(5, '0'),
+                        StatusPay = StatusType.Pending,
+                        DateGenerate = DateTime.Now
+                    });
             }
+
             try
             {
                 await UnitOfWork.SaveChangesAsync();

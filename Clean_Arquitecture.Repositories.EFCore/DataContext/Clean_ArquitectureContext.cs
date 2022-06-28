@@ -1,10 +1,5 @@
 ﻿using Clean_Arquitecture.Entities.POCOEntities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Clean_Arquitecture.Repositories.EFCore.DataContext
 {
@@ -18,6 +13,7 @@ namespace Clean_Arquitecture.Repositories.EFCore.DataContext
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,17 +25,21 @@ namespace Clean_Arquitecture.Repositories.EFCore.DataContext
                 .Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(40);
-
+            //------------------------------
             modelBuilder.Entity<Product>()
                 .Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(40);
-
+            //------------------------------
             modelBuilder.Entity<Order>()
                 .Property(o => o.CustomerId)
                 .IsRequired()
                 .HasMaxLength(5)
                 .IsFixedLength();
+            modelBuilder.Entity<Order>()
+                .HasOne<Customer>()
+                .WithMany()
+                .HasForeignKey(o => o.CustomerId);
             modelBuilder.Entity<Order>()
                 .Property(o => o.ShipAddress)
                 .IsRequired()
@@ -53,18 +53,19 @@ namespace Clean_Arquitecture.Repositories.EFCore.DataContext
             modelBuilder.Entity<Order>()
                 .Property(o => o.ShipPostalCode)
                 .HasMaxLength(10);
-
+            //------------------------------
             modelBuilder.Entity<OrderDetail>()
                 .HasKey(od => new { od.OrderId, od.ProductId });
 
-            modelBuilder.Entity<Order>()
-                .HasOne<Customer>()
-                .WithMany()
-                .HasForeignKey(o => o.CustomerId);
             modelBuilder.Entity<OrderDetail>()
                 .HasOne<Product>()
                 .WithMany()
                 .HasForeignKey(od => od.ProductId);
+            //------------------------------
+            modelBuilder.Entity<Payment>()
+                .Property(p => p.Ticket)
+                .HasMaxLength(6)
+                .IsFixedLength();
 
             modelBuilder.Entity<Product>()
                 .HasData(

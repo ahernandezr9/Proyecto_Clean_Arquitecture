@@ -16,7 +16,7 @@ namespace Clean_Arquitecture.Controllers
         public GetOrdersByCustomerController(IGetAllOrdersInputPort inputPort, IGetAllOrdersOutputPort outputPort) =>
             (InputPort, OutputPort) = (inputPort, outputPort);
 
-        [HttpPost("create-order")]
+        [HttpPost("Get-Orders-By-Customer")]
         public async Task<GetAllOrdersOutput> GetAllOrdersByCustomer(GetAllOrdersParams input)
         {
             await InputPort.Handle(input);

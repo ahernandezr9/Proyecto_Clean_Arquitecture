@@ -4,14 +4,16 @@ using Clean_Arquitecture.Repositories.EFCore.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Clean_Arquitecture.Repositories.EFCore.Migrations
+namespace Clean_Arquitecture.Repositories.EFCore.Migrations_v2
 {
     [DbContext(typeof(Clean_ArquitectureContext))]
-    partial class Clean_ArquitectureContextModelSnapshot : ModelSnapshot
+    [Migration("20220627193923_InitialCreate_v2")]
+    partial class InitialCreate_v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

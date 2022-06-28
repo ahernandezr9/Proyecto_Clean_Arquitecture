@@ -5,8 +5,10 @@ using Clean_Arquitecture.Repositories.EFCore.Repositories;
 using Clean_Arquitecture.UseCases.Common.Validators;
 using Clean_Arquitecture.UseCases.CreateOrder;
 using Clean_Arquitecture.UseCases.GetAllOrders;
+using Clean_Arquitecture.UseCases.PayOrder;
 using Clean_Arquitecture.UseCasesPorts.CreateOrder;
 using Clean_Arquitecture.UseCasesPorts.GetAllOrders;
+using Clean_Arquitecture.UseCasesPorts.PayOrder;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,7 @@ namespace Clean_Arquitecture.IoC
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddValidatorsFromAssembly(typeof(CreateOrderValidator).Assembly);
@@ -35,6 +38,10 @@ namespace Clean_Arquitecture.IoC
             //Get Orders by Customer
             services.AddScoped<IGetAllOrdersInputPort, GetAllOrdersInteractor>();
             services.AddScoped<IGetAllOrdersOutputPort, GetAllOrdersPresenter>();
+
+            //Pay Order by OrderId
+            services.AddScoped<IPayOrderInputPort, PayOrderInteractor>();
+            services.AddScoped<IPayOrderOutputPort, PayOrderPresenter>();
 
             return services;
         }
