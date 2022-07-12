@@ -54,11 +54,9 @@ namespace Clean_Arquitecture.UseCases.PayOrder
                 var expressionPayment = new Specification<Payment>(p => paymentId.Contains(p.Id));
                 var payments = PaymentRepository.GetOrdersBySpecification(expressionPayment).ToList();
 
-                var ordersId = ordersDetail.Select(s => s.Order.Id).FirstOrDefault();
+                var id = ordersDetail.Select(s => s.Order.Id).FirstOrDefault();
 
                 
-                foreach (var id in ordersId)
-                {
                     var order = ordersDetail.Join(payments, o => o.OrderId, pay => pay.OrderId, (o,pay) => new { o, pay })
                         .Where(s => s.o.OrderId == id)
                         .Select(s => new GetDataOrder(
@@ -66,6 +64,7 @@ namespace Clean_Arquitecture.UseCases.PayOrder
                             s.o.Order.DiscountType,
                             s.o.Order.Discount,
                             s.pay.Ticket,
+                            s.pay.StatusPay,
                             s.pay.AmountPay
                             ))
                         .FirstOrDefault();
@@ -82,7 +81,6 @@ namespace Clean_Arquitecture.UseCases.PayOrder
                     order.SetOrderDetails(detail);
 
                     output.Order=(order);
-                }
             }
             catch (Exception)
             {

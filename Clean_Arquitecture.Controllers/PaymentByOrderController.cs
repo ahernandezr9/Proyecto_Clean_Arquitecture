@@ -20,7 +20,7 @@ namespace Clean_Arquitecture.Controllers
             OutputPort = outputPort;
         }
 
-        [HttpPost("Payment-By-Order")]
+        [HttpPost("PaymentByOrder")]
         public async Task<PayOrderOutput> PayByOrder(PayOrderParams input)
         {
             await InputPort.Handle(input);

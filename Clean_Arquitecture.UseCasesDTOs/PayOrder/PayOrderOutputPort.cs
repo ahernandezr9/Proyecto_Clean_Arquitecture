@@ -22,13 +22,14 @@ namespace Clean_Arquitecture.UseCasesDTOs.PayOrder
         public StatusType StatusPay { get; private set; }
         public double AmountPay { get; private set; }
 
-        public GetDataOrder(DateTime orderDate, 
-            DiscountType discountType, double discount, string ticket, double amountPay)
+        public GetDataOrder(DateTime orderDate,
+            DiscountType discountType, double discount, string ticket, StatusType statusPay, double amountPay)
         {
             OrderDate = orderDate;
             DiscountType = discountType;
             Discount = discount;
             Ticket = ticket;
+            StatusPay = statusPay;
             AmountPay = amountPay;
         }
 

@@ -15,23 +15,21 @@ namespace Clean_Arquitecture.Presenters
 
         public Task Handle(PayOrderOutputPort output)
         {
-            var payOrder = output.Order
-                        .Select(s => new Order
-                        {
-                            OrderDate = s.OrderDate,
-                            DiscountType = s.DiscountType,
-                            Discount = s.Discount,
-                            OrderDetails = s.OrderDetails
+            var payOrder = new Order { 
+                            OrderDate = output.Order.OrderDate,
+                            DiscountType = output.Order.DiscountType,
+                            Discount = output.Order.Discount,
+                            OrderDetails = output.Order.OrderDetails
                             .Select(od => new OrderDetail
                             {
                                 Product = od.Product,
                                 UnitPrice = od.UnitPrice,
                                 Quantity = od.Quantity
                             }).ToList(),
-                            Ticket = s.Ticket,
-                            StatusPay = s.StatusPay,
-                            AmountPay = s.AmountPay
-                        });
+                            Ticket = output.Order.Ticket,
+                            StatusPay = output.Order.StatusPay,
+                            AmountPay = output.Order.AmountPay
+            };
             Content = new PayOrderOutput()
             {
                 Order = payOrder
