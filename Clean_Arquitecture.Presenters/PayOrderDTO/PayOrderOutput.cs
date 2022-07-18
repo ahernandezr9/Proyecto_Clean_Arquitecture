@@ -9,21 +9,21 @@ namespace Clean_Arquitecture.Presenters.PayOrderDTO
 {
     public class PayOrderOutput
     {
-        public Order Order{ get; set; }
+        public Order_Pay Order { get; set; }
     }
-    public class Order
+    public class Order_Pay
     {
         public DateTime OrderDate { get; set; }
         public DiscountType DiscountType { get; set; }
         public double Discount { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
+        public List<OrderDetail_Pay> OrderDetails { get; set; }
 
         public string Ticket { get; set; }
         public StatusType StatusPay { get; set; }
         public double AmountPay { get; set; }
     }
 
-    public class OrderDetail
+    public class OrderDetail_Pay
     {
         public string Product { get; set; }
         public decimal UnitPrice { get; set; }

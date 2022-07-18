@@ -15,12 +15,12 @@ namespace Clean_Arquitecture.Presenters
 
         public Task Handle(PayOrderOutputPort output)
         {
-            var payOrder = new Order { 
+            var payOrder = new Order_Pay { 
                             OrderDate = output.Order.OrderDate,
                             DiscountType = output.Order.DiscountType,
                             Discount = output.Order.Discount,
                             OrderDetails = output.Order.OrderDetails
-                            .Select(od => new OrderDetail
+                            .Select(od => new OrderDetail_Pay
                             {
                                 Product = od.Product,
                                 UnitPrice = od.UnitPrice,
