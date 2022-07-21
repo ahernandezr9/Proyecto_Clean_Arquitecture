@@ -9,7 +9,7 @@ namespace Clean_Arquitecture.Entities.POCOEntities
         public int OrderId { get; set; }
         public double AmountPay { get; set; }
         public string Ticket { get; set; }
-        public StatusType StatusPay { get; set; }
+        public PaymentStatus StatusPay { get; set; }
         public DateTime DateGenerate { get; set; }
         public Order Order { get; set; }
     }

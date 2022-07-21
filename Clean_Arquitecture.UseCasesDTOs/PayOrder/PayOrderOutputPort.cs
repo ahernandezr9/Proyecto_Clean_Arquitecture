@@ -19,11 +19,11 @@ namespace Clean_Arquitecture.UseCasesDTOs.PayOrder
         public List<GetOrderDetail> OrderDetails { get; private set; }
         public string Ticket { get; private set; }
 
-        public StatusType StatusPay { get; private set; }
+        public PaymentStatus StatusPay { get; private set; }
         public double AmountPay { get; private set; }
 
         public GetDataOrder(DateTime orderDate,
-            DiscountType discountType, double discount, string ticket, StatusType statusPay, double amountPay)
+            DiscountType discountType, double discount, string ticket, PaymentStatus statusPay, double amountPay)
         {
             OrderDate = orderDate;
             DiscountType = discountType;
@@ -33,6 +33,7 @@ namespace Clean_Arquitecture.UseCasesDTOs.PayOrder
             AmountPay = amountPay;
         }
 
+        public GetDataOrder() { }
         public void SetOrderDetails(List<GetOrderDetail> orderDetails)
             => OrderDetails = orderDetails;
     }

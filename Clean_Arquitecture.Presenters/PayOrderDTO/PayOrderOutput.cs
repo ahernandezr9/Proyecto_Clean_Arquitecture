@@ -19,7 +19,7 @@ namespace Clean_Arquitecture.Presenters.PayOrderDTO
         public List<OrderDetail_Pay> OrderDetails { get; set; }
 
         public string Ticket { get; set; }
-        public StatusType StatusPay { get; set; }
+        public PaymentStatus StatusPay { get; set; }
         public double AmountPay { get; set; }
     }
 

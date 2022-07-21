@@ -1,4 +1,5 @@
-﻿using Clean_Arquitecture.Entities.Interfaces;
+﻿using Clean_Arquitecture.Entities.Exceptions;
+using Clean_Arquitecture.Entities.Interfaces;
 using Clean_Arquitecture.Entities.POCOEntities;
 using Clean_Arquitecture.Entities.Specifications;
 using Clean_Arquitecture.UseCases.Common.Validators;
@@ -39,25 +40,27 @@ namespace Clean_Arquitecture.UseCases.PayOrder
             await Validator<PayOrderParams>.Validate(payOrders, Validators);
 
             var output = new PayOrderOutputPort();
-            //output.Order = new GetDataOrder;
+            output.Order = new GetDataOrder();
 
             try
             {
                 var expressionOrderDetail = new Specification<OrderDetail>(s => s.Order.Id == payOrders.OrderId);
                 var ordersDetail = OrderDetailRepository.GetOrdersDetailBySpecification(expressionOrderDetail).ToList();
 
-                var productsId = ordersDetail.Select(s => s.ProductId).Distinct().ToList();
+                var productsId = ordersDetail.Select(od => od.ProductId).Distinct().ToList();
                 var expressionProduct = new Specification<Product>(s => productsId.Contains(s.Id));
                 var products = ProductRepository.GetProductsBySpecification(expressionProduct).ToList();
 
-                var paymentId = ordersDetail.Select(p => p.OrderId).Distinct().ToList();
-                var expressionPayment = new Specification<Payment>(p => paymentId.Contains(p.Id));
-                var payments = PaymentRepository.GetOrdersBySpecification(expressionPayment).ToList();
-
                 var id = ordersDetail.Select(s => s.Order.Id).FirstOrDefault();
 
+                var paymentId = ordersDetail.Select(pay => pay.OrderId).Distinct().ToList();
+                var expressionPayment = new Specification<Payment>(epay => paymentId.Contains(epay.Order.Id));
+                var payment = PaymentRepository.GetOrdersBySpecification(expressionPayment).ToList();
+
                 
-                    var order = ordersDetail.Join(payments, o => o.OrderId, pay => pay.OrderId, (o,pay) => new { o, pay })
+                
+
+                var order = ordersDetail.Join(payment, o => o.OrderId, pay => pay.OrderId, (o,pay) => new { o, pay })
                         .Where(s => s.o.OrderId == id)
                         .Select(s => new GetDataOrder(
                             s.o.Order.OrderDate,
@@ -82,10 +85,9 @@ namespace Clean_Arquitecture.UseCases.PayOrder
 
                     output.Order=(order);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new GeneralException("Error getting order", ex.Message);
             }
 
             await OutputPort.Handle(output);

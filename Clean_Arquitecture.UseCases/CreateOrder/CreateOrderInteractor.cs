@@ -69,7 +69,7 @@ namespace Clean_Arquitecture.UseCases.CreateOrder
                         //Ticket = ""+ Order,
                         //Ticket = "T" + Item.Quantity.ToString().PadLeft(5, '0'),
                         //Ticket = "T" + Order.Id.ToString().PadLeft(5, '0'),
-                        StatusPay = StatusType.Pending,
+                        StatusPay = PaymentStatus.Pending,
                         DateGenerate = DateTime.Now
                     });
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clean_Arquitecture.Entities.Enums
 {
-    public enum StatusType
+    public enum PaymentStatus
     {
         Pending, Paid
     }

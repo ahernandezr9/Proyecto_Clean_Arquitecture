@@ -21,6 +21,9 @@ namespace Clean_Arquitecture.Controllers
         }
 
         [HttpPost("PaymentByOrder")]
+        [ProducesResponseType(typeof(PayOrderOutputPort), 200)]
+        [ProducesResponseType(typeof(ProblemDetails), 400)]
+        [ProducesResponseType(typeof(ProblemDetails), 500)]
         public async Task<PayOrderOutput> PayByOrder(PayOrderParams input)
         {
             await InputPort.Handle(input);
