@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clean_Arquitecture.Repositories.EFCore.Migrations
 {
     [DbContext(typeof(Clean_ArquitectureContext))]
-    [Migration("20220428193942_InitialCreate")]
+    [Migration("20220721202242_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,6 +125,38 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
                     b.ToTable("OrderDetails");
                 });
 
+            modelBuilder.Entity("Clean_Arquitecture.Entities.POCOEntities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("AmountPay")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("DateGenerate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int")
+                        .IsFixedLength(true);
+
+                    b.Property<int>("StatusPay")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Ticket")
+                        .HasMaxLength(6)
+                        .HasColumnType("nchar(6)")
+                        .IsFixedLength(true);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("Clean_Arquitecture.Entities.POCOEntities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -179,6 +211,17 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
                     b.HasOne("Clean_Arquitecture.Entities.POCOEntities.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Clean_Arquitecture.Entities.POCOEntities.Payment", b =>
+                {
+                    b.HasOne("Clean_Arquitecture.Entities.POCOEntities.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

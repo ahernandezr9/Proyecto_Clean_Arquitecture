@@ -18,10 +18,10 @@ namespace Clean_Arquitecture.Repositories.EFCore.Repositories
             Context.Add(payment);
         }
 
-        public IEnumerable<Payment> GetOrdersBySpecification(Specification<Payment> specification)
+        public IEnumerable<Payment> GetPaymentsBySpecification(Specification<Payment> specification)
         {
             var ExpressionDelegate = specification.Expression.Compile();
-            return Context.Payments.Include(i => i.OrderId).Where(ExpressionDelegate);
+            return Context.Payments.Include(i => i.Order).Where(ExpressionDelegate);
         }
     }
 }

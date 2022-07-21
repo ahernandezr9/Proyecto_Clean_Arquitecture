@@ -66,6 +66,10 @@ namespace Clean_Arquitecture.Repositories.EFCore.DataContext
                 .Property(p => p.Ticket)
                 .HasMaxLength(6)
                 .IsFixedLength();
+            modelBuilder.Entity<Payment>()
+                .Property(o => o.OrderId)
+                .IsRequired()
+                .IsFixedLength();
 
             modelBuilder.Entity<Product>()
                 .HasData(

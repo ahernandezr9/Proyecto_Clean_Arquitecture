@@ -51,14 +51,10 @@ namespace Clean_Arquitecture.UseCases.PayOrder
                 var expressionProduct = new Specification<Product>(s => productsId.Contains(s.Id));
                 var products = ProductRepository.GetProductsBySpecification(expressionProduct).ToList();
 
+                var expressionPayment = new Specification<Payment>(s => s.Order.Id == payOrders.OrderId);
+                var payment = PaymentRepository.GetPaymentsBySpecification(expressionPayment).ToList();
+
                 var id = ordersDetail.Select(s => s.Order.Id).FirstOrDefault();
-
-                var paymentId = ordersDetail.Select(pay => pay.OrderId).Distinct().ToList();
-                var expressionPayment = new Specification<Payment>(epay => paymentId.Contains(epay.Order.Id));
-                var payment = PaymentRepository.GetOrdersBySpecification(expressionPayment).ToList();
-
-                
-                
 
                 var order = ordersDetail.Join(payment, o => o.OrderId, pay => pay.OrderId, (o,pay) => new { o, pay })
                         .Where(s => s.o.OrderId == id)

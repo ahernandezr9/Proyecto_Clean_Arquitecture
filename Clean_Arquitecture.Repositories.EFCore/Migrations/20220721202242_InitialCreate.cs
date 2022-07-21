@@ -85,6 +85,29 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(type: "int", fixedLength: true, nullable: false),
+                    AmountPay = table.Column<double>(type: "float", nullable: false),
+                    Ticket = table.Column<string>(type: "nchar(6)", fixedLength: true, maxLength: 6, nullable: true),
+                    StatusPay = table.Column<int>(type: "int", nullable: false),
+                    DateGenerate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Customers",
                 columns: new[] { "Id", "Name" },
@@ -114,6 +137,11 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
                 name: "IX_Orders_CustomerId",
                 table: "Orders",
                 column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payments_OrderId",
+                table: "Payments",
+                column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -122,10 +150,13 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Customers");

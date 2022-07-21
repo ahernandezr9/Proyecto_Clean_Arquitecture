@@ -127,22 +127,18 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(5)
                         .HasColumnType("int")
-                        .IsFixedLength(true)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("AmountPay")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("AmountPay")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("DateGenerate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OrderId1")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .IsFixedLength(true);
 
                     b.Property<int>("StatusPay")
                         .HasColumnType("int");
@@ -155,8 +151,6 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("OrderId1");
 
                     b.ToTable("Payments");
                 });
@@ -223,15 +217,11 @@ namespace Clean_Arquitecture.Repositories.EFCore.Migrations
 
             modelBuilder.Entity("Clean_Arquitecture.Entities.POCOEntities.Payment", b =>
                 {
-                    b.HasOne("Clean_Arquitecture.Entities.POCOEntities.Order", null)
+                    b.HasOne("Clean_Arquitecture.Entities.POCOEntities.Order", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Clean_Arquitecture.Entities.POCOEntities.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId1");
 
                     b.Navigation("Order");
                 });
